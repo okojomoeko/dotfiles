@@ -1,0 +1,49 @@
+# -----------------------------
+# Alias
+# -----------------------------
+# global alias
+alias -g L='| less'
+alias -g H='| head'
+alias -g G='| grep'
+alias -g GI='| grep -ri'
+
+# alias
+# ls
+# if [ "$(uname)" == 'Darwin' ]; then
+#   # alias ls='ls -G'
+#   echo "Mac"
+# else
+#   # alias ls='ls --color=auto'
+#   echo "linux"
+# fi
+case "${OSTYPE}" in
+darwin*)
+  alias ls='ls -G'
+  ;;
+linux*)
+  alias ls='ls --color=auto'
+  ;;
+esac
+alias lst='ls -ltr'
+alias la='ls -a'
+alias ll='ls -alh'
+
+
+alias diff='diff -U1'
+
+# dotfiles
+alias dotfiles='~/repos/dotfiles'
+
+# zshrc
+alias zshrc='vim ~/repos/dotfiles/zsh/.zshrc'
+alias zshalias='vim ~/repos/dotfiles/zsh/.zsh_aliases'
+
+# cd
+alias cd='cdls'
+alias ..='cd ..'
+alias ..2='cd ../..'
+alias ..3='cd ../../..'
+
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
