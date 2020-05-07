@@ -1,7 +1,7 @@
 alias cd="cdls"
 alias pd="pushdls"
 alias code="open -a Visual\ Studio\ Code"
-alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'"
+alias mytree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'"
 # Alias for making a "Super cd"
 alias scd="cd"
 
