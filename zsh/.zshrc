@@ -114,6 +114,11 @@ autoload -Uz compinit ; compinit
 # 単語の入力途中でもTab補完を有効化
 #setopt complete_in_word
 
+#入力途中の履歴補完を有効化する
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+
 # コマンドミスを修正
 setopt correct
 
