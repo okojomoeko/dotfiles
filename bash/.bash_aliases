@@ -5,6 +5,7 @@ alias mytree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|
 # Alias for making a "Super cd"
 alias scd="cd"
 
+
 # VS Code alias
 case "${OSTYPE}" in
 darwin*)
