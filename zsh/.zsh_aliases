@@ -23,6 +23,8 @@ darwin*)
 linux*)
   alias ls='ls --color=auto'
   ;;
+msys*)
+  alias code='~/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe'
 esac
 alias lst='ls -ltr'
 alias la='ls -a'
@@ -48,5 +50,6 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-# my tree 
+
+# my tree
 alias mytree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'"

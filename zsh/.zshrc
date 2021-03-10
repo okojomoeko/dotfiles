@@ -114,6 +114,11 @@ autoload -Uz compinit ; compinit
 # 単語の入力途中でもTab補完を有効化
 #setopt complete_in_word
 
+#入力途中の履歴補完を有効化する
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+
 # コマンドミスを修正
 setopt correct
 
@@ -168,8 +173,22 @@ autoload -Uz colors; colors
 # 一般ユーザ時
 tmp_prompt="%{${fg[cyan]}%}%n%# %{${reset_color}%}"
 tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
-tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"
+# tmp_rprompt="%{${fg[green]}%}[%(4~,%-2~/.../%2~,%d)]%{${reset_color}%}"
 tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
+
+# git branch 表示
+autoload -Uz vcs_info
+# zstyle ':vcs_info:*' formats '(%s)-[%b]'
+# zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+tmp_rprompt="%1(v|%F{magenta}%1v%{${fg[green]}%}[%(4~,%-2~/.../%2~,%d)]%f|%F{green}[%(4~,%-2~/.../%2~,%d)]%f)"
+
 
 # rootユーザ時(太字にし、アンダーバーをつける)
 if [ ${UID} -eq 0 ]; then
@@ -187,6 +206,7 @@ SPROMPT=$tmp_sprompt  # スペル訂正用プロンプト
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
   PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
 ;
+
 
 # -----------------------------
 # Functions
