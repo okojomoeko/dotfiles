@@ -131,3 +131,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export PATH="/home/okojo/.local/bin:$PATH"
