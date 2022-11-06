@@ -79,3 +79,30 @@ function gcl() {
   git_remove_merged_local_branch
   git_remove_squash_merged_local_branch
 }
+
+function makedoc(){
+  if [ $# -ne 1 ]; then
+    echo "Input document name"
+    return
+  fi
+
+  filename="$(date '+%Y%m%d')_$1"
+  echo $filename
+
+  if [ -d $filename ]; then
+    echo "Directory Exists: $filename"
+    return
+  fi
+  mkdir $filename;
+  touch "$filename/$filename.md";
+  echo -e "# $1\n\n## \n\n" >> "$filename/$filename.md";
+  code "$filename/$filename.md";
+}
+
+today(){
+  echo "$(date +%Y%m%d)";
+}
+
+now(){
+  echo "$(date +%Y%m%d_%H%M%S)"
+}
