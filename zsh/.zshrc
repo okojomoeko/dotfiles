@@ -229,4 +229,10 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export PATH="/home/okojo/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# Lima BEGIN
+# Make sure iptables and mount.fuse3 are available
+PATH="$PATH:/usr/sbin:/sbin"
+export PATH
+# Lima END
