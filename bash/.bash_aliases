@@ -106,3 +106,19 @@ today(){
 now(){
   echo "$(date +%Y%m%d_%H%M%S)"
 }
+
+cmdfordir(){
+  array=($(find . -maxdepth 1 -type d))
+
+  cmd=${@:1}
+
+  for obj in "${array[@]}"; do
+    if [ $obj = "." ] || [ ${obj:0:3} = "./." ]; then
+      continue
+    fi
+
+    echo -e "\033[1;33mExecute '$cmd' in $obj\033[0;39m"
+    eval "cd $obj; $cmd; echo -en '\n'; cd ../;"
+
+  done
+}
