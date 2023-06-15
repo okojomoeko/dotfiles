@@ -1,10 +1,10 @@
 # dotfiles
 
 - bash
-  - bashrc
-  - bash aliases
+    - bashrc
+    - bash aliases
 - zsh
-  - zshrc
-  - zsh aliases
+    - zshrc
+    - zsh aliases
 - vim
-  - vimrc
+    - vimrc

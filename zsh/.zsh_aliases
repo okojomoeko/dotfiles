@@ -26,6 +26,18 @@ linux*)
 msys*)
   alias code='~/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe'
 esac
+
+# cat to bat
+if type bat > /dev/null 2>&1; then
+  alias cat='bat'
+fi
+
+# ls to exa
+if type exa > /dev/null 2>&1; then
+  alias ls='exa --icons --git'
+  alias lt='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
+  alias ltl='exa -T -L 3 -a -I "node_modules|.git|.cache" -l --icons'
+fi
 alias lst='ls -ltr'
 alias la='ls -a'
 alias ll='ls -alh'
@@ -34,11 +46,11 @@ alias ll='ls -alh'
 alias diff='diff -U1'
 
 # dotfiles
-alias dotfiles='~/repos/dotfiles'
+alias dotfiles='~/work/env/dotfiles'
 
 # zshrc
-alias zshrc='vim ~/repos/dotfiles/zsh/.zshrc'
-alias zshalias='vim ~/repos/dotfiles/zsh/.zsh_aliases'
+alias zshrc='vim ~/work/env/dotfiles/zsh/.zshrc'
+alias zshalias='vim ~/work/env/dotfiles/zsh/.zsh_aliases'
 
 # cd
 alias cd='cdls'
