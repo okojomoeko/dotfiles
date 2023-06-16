@@ -109,7 +109,12 @@ setopt hist_verify
 # Completion
 # -----------------------------
 # 自動補完を有効にする
-autoload -Uz compinit ; compinit
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  autoload -Uz compinit
+  compinit
+fi
 
 # 単語の入力途中でもTab補完を有効化
 #setopt complete_in_word
@@ -242,3 +247,9 @@ eval "$(pyenv virtualenv-init -)"
 PATH="$PATH:/usr/sbin:/sbin"
 export PATH
 # Lima END
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/okojo/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+eval "$(starship init zsh)"
+
