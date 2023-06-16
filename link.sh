@@ -1,21 +1,15 @@
-IGNORE_PATTERN="^\.(git|config)"
+IGNORE_PATTERN="^\.(git|config|DS_Store)"
 
-# echo "Create dotfile links."
-# for dotfile in .??*; do
-#   [[ $dotfile =~ $IGNORE_PATTERN ]] && continue
-#   ln -snfv "$(pwd)/$dotfile" "$HOME/$dotfile"
-# done
-
-
-mkdir -p $HOME/.config
-for dotfile in $(ls -1 .config); do
+echo "Create dotfile links."
+for dotfile in .??*; do
   [[ $dotfile =~ $IGNORE_PATTERN ]] && continue
-  if [ -d "$HOME/.config/$dotfile" ]; then
-    ln -snfv "$(pwd)/.config/$dotfile/" "$HOME/.config/$dotfile"
+  ln -snfv "$(pwd)/$dotfile" "$HOME/$dotfile"
+done
 
-  else
-    ln -snfv "$(pwd)/.config/$dotfile" "$HOME/.config/$dotfile"
-  fi
-  # echo "$(pwd)/.config/$dotfile"
-  # echo "$HOME/.config/$dotfile"
+
+IGNORE_PATTERN=".(DS_Store)$"
+mkdir -p $HOME/.config
+echo "Create .config links."
+for dotfile in $(find .config -type f | grep -Ev $IGNORE_PATTERN ); do
+  ln -snfv "$(pwd)/$dotfile" "$HOME/$dotfile"
 done
