@@ -239,3 +239,4 @@ export PATH
 export PATH="/Users/okojo/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 eval "$(starship init zsh)"
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
