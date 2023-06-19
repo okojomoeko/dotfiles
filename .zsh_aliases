@@ -28,16 +28,16 @@ fi
 #   # alias ls='ls --color=auto'
 #   echo "linux"
 # fi
-case "${OSTYPE}" in
-darwin*)
-  alias ls='ls -G'
-  ;;
-linux*)
-  alias ls='ls --color=auto'
-  ;;
-msys*)
-  alias code='~/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe'
-esac
+# case "${OSTYPE}" in
+# darwin*)
+#   alias ls='ls -G'
+#   ;;
+# linux*)
+#   alias ls='ls --color=auto'
+#   ;;
+# msys*)
+#   alias code='~/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe'
+# esac
 
 alias lst='ls -ltr'
 alias la='ls -a'
