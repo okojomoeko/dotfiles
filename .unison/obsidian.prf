@@ -1,0 +1,20 @@
+# タイムスタンプをコピーする
+times = true
+
+# 新しいファイルを優先
+prefer = newer
+
+#新規作成ファイルはユーザに同期如何を問わない
+auto = true
+
+#ファイル更新日時による更新有無の判定
+fastcheck = true
+
+
+# 同期する対象のルートパスの定義
+root=/Users/okojo/googlevault
+root=/Users/okojo/icloudvault
+
+# 同期するパスの定義
+path=./
+ignore = Name .DS_Store
