@@ -74,7 +74,7 @@ function git_prune_remote() {
 
 function git_remove_merged_local_branch() {
   echo "Start removing out-dated local merged branches"
-  git branch --merged | egrep -v "(^\*|main|develop|ANY_BRANCH_YOU_WANT_TO_EXCLUDE)" | xargs -I % git branch -d %
+  git branch --merged | egrep -v "(^\*|main|develop|dev|ANY_BRANCH_YOU_WANT_TO_EXCLUDE)" | xargs -I % git branch -d %
   echo "Finish removing out-dated local merged branches"
 }
 
