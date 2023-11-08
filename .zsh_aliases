@@ -58,6 +58,9 @@ alias rm='rm -i'
 # my tree
 alias mytree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'"
 
+alias obsidian-sync="fswatch -o /Users/$USER/googlevault /Users/$USER/icloudvault | xargs -I{} unison -batch obsidian"
+
+
 
 # gcl: git-cleanup-remote-and-local-branches
 #
@@ -106,6 +109,21 @@ function gcl() {
   git_remove_squash_merged_local_branch
 }
 
+function mkfleet(){
+
+  filename="$(date "+%Y%m%d%H%M%S")"
+  echo $filename
+
+  if [ -d $filename ]; then
+    echo "Directory Exists: $filename"
+    return
+  fi
+
+  touch "$filename.md";
+  # echo -e "---\ntitle: []\naliases: []\ntags: []\nid: $filename\ndate: $(date "+%Y-%m-%d")\npublish: false\n---\n\n# \n\n" >> "$filename.md";
+  code "$filename.md";
+}
+
 function makedoc(){
   if [ $# -ne 1 ]; then
     echo "Input document name"
@@ -121,7 +139,7 @@ function makedoc(){
   fi
   mkdir $filename;
   touch "$filename/$filename.md";
-  echo -e "# $1\n\n## \n\n" >> "$filename/$filename.md";
+  echo -e "---\# $1\n\n## \n\n" >> "$filename/$filename.md";
   code "$filename/$filename.md";
 }
 
