@@ -94,3 +94,6 @@ zsdoc/data
 
 # End of https://www.gitignore.io/api/vim,zsh,macos,powershell
 © 2020 GitHub, Inc.
+
+.unison/*
+!/.unison/*.prf
