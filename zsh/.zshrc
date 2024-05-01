@@ -13,6 +13,8 @@
 # パスを追加したい場合
 # export PATH="$HOME/bin:$PATH"
 export PATH=$PATH:/opt/local/bin
+export PATH=$PATH:/usr/local/cuda/bin
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
 
 
 # emacsキーバインド
