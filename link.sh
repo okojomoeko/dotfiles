@@ -1,3 +1,5 @@
+#!/bin/sh
+set -euxo pipefail
 IGNORE_PATTERN="^\.(git|config|DS_Store)"
 
 echo "Create dotfile links."
