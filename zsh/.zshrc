@@ -73,7 +73,6 @@ zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
 eval "$(zoxide init --cmd cd zsh)"
 
-
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
@@ -225,7 +224,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-eval "$(pyenv virtualenv-init -)"
 
 # Lima BEGIN
 # Make sure iptables and mount.fuse3 are available
