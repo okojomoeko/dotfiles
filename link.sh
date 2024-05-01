@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -euxo pipefail
 IGNORE_PATTERN="^\.(git|config|DS_Store)"
 
