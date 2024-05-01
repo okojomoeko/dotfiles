@@ -71,6 +71,8 @@ zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 # umask 022
 # ulimit -c 0
 
+eval "$(zoxide init --cmd cd zsh)"
+
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
@@ -213,12 +215,7 @@ SPROMPT=$tmp_sprompt  # スペル訂正用プロンプト
 ;
 
 
-# -----------------------------
-# Functions
-# -----------------------------
-cdls(){
-  \cd $1; ls;
-}
+
 
 
 export PATH="$HOME/.local/bin:$PATH"
@@ -227,7 +224,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-eval "$(pyenv virtualenv-init -)"
 
 # Lima BEGIN
 # Make sure iptables and mount.fuse3 are available
@@ -236,6 +232,12 @@ export PATH
 # Lima END
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/okojo/.rd/bin:$PATH"
+export PATH="$HOME/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 eval "$(starship init zsh)"
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+complete -C /opt/homebrew/bin/aws_completer aws
+source $HOME/.config/broot/launcher/bash/br

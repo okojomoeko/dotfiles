@@ -12,11 +12,11 @@ if type bat > /dev/null 2>&1; then
   alias cat='bat'
 fi
 
-# ls to exa
-if type exa > /dev/null 2>&1; then
-  alias ls='exa --icons --git'
-  alias lt='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
-  alias ltl='exa -T -L 3 -a -I "node_modules|.git|.cache" -l --icons'
+# ls to eza
+if type eza > /dev/null 2>&1; then
+  alias ls='eza --icons --git'
+  alias lt='eza -T -L 3 -a -I "node_modules|.git|.cache" --icons'
+  alias ltl='eza -T -L 3 -a -I "node_modules|.git|.cache" -l --icons'
 fi
 
 # alias
@@ -46,6 +46,12 @@ alias ll='ls -alh'
 alias diff='diff -U1'
 
 # cd
+# -----------------------------
+# Functions
+# -----------------------------
+cdls(){
+  \cd $1; ls;
+}
 alias cd='cdls'
 alias ..='cd ..'
 alias ..2='cd ../..'
@@ -57,6 +63,11 @@ alias rm='rm -i'
 
 # my tree
 alias mytree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'"
+
+alias obsidian-sync='fswatch -o $HOME/googlevault /$HOME/icloudvault | xargs -I{} unison -batch -times -prefer newer -auto -fastcheck true -path ./ -ignore "Name .DS_Store" $HOME/googlevault $HOME/icloudvault'
+alias obsidian-sync-blog='fswatch -o $HOME/work/projects/okojomemorandum/drafts /$HOME/icloudvault/103_BlogNotes | xargs -I{} unison -batch -times -prefer newer -auto -fastcheck true -path ./ -ignore "Name .DS_Store" $HOME/work/projects/okojomemorandum/drafts $HOME/icloudvault/103_BlogNotes'
+
+
 
 
 # gcl: git-cleanup-remote-and-local-branches
@@ -74,7 +85,7 @@ function git_prune_remote() {
 
 function git_remove_merged_local_branch() {
   echo "Start removing out-dated local merged branches"
-  git branch --merged | egrep -v "(^\*|main|develop|ANY_BRANCH_YOU_WANT_TO_EXCLUDE)" | xargs -I % git branch -d %
+  git branch --merged | egrep -v "(^\*|main|develop|dev|ANY_BRANCH_YOU_WANT_TO_EXCLUDE)" | xargs -I % git branch -d %
   echo "Finish removing out-dated local merged branches"
 }
 
@@ -106,6 +117,21 @@ function gcl() {
   git_remove_squash_merged_local_branch
 }
 
+function mkfleet(){
+
+  filename="$(date "+%Y%m%d%H%M%S")"
+  echo $filename
+
+  if [ -d $filename ]; then
+    echo "Directory Exists: $filename"
+    return
+  fi
+
+  touch "$filename.md";
+  # echo -e "---\ntitle: []\naliases: []\ntags: []\nid: $filename\ndate: $(date "+%Y-%m-%d")\npublish: false\n---\n\n# \n\n" >> "$filename.md";
+  code "$filename.md";
+}
+
 function makedoc(){
   if [ $# -ne 1 ]; then
     echo "Input document name"
@@ -121,7 +147,7 @@ function makedoc(){
   fi
   mkdir $filename;
   touch "$filename/$filename.md";
-  echo -e "# $1\n\n## \n\n" >> "$filename/$filename.md";
+  echo -e "---\# $1\n\n## \n\n" >> "$filename/$filename.md";
   code "$filename/$filename.md";
 }
 
