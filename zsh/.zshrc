@@ -115,7 +115,7 @@ setopt hist_verify
 # 自動補完を有効にする
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   autoload -Uz compinit
   compinit
 fi
@@ -237,9 +237,9 @@ export PATH
 export PATH="$HOME/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 eval "$(starship init zsh)"
-export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/openssl@3/bin:$PATH"
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
-complete -C /opt/homebrew/bin/aws_completer aws
+complete -o nospace -C $HOMEBREW_PREFIX/bin/terraform terraform
+complete -C $HOMEBREW_PREFIX/bin/aws_completer aws
 source $HOME/.config/broot/launcher/bash/br
