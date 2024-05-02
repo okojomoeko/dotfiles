@@ -50,7 +50,7 @@ alias diff='diff -U1'
 # Functions
 # -----------------------------
 cdls(){
-  \cd $1; ls;
+  \cd $1 && ls;
 }
 alias cd='cdls'
 alias ..='cd ..'

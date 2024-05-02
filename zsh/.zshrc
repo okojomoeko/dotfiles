@@ -217,7 +217,8 @@ SPROMPT=$tmp_sprompt  # スペル訂正用プロンプト
 ;
 
 
-
+eval "$(starship init zsh)"
+eval "$(mcfly init zsh)"
 
 
 export PATH="$HOME/.local/bin:$PATH"
@@ -236,7 +237,6 @@ export PATH
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="$HOME/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-eval "$(starship init zsh)"
 export PATH="$HOMEBREW_PREFIX/opt/openssl@3/bin:$PATH"
 
 autoload -U +X bashcompinit && bashcompinit
