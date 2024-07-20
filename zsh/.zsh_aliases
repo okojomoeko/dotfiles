@@ -64,9 +64,10 @@ alias rm='rm -i'
 # my tree
 alias mytree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'"
 
-alias obsidian-sync='fswatch -o $HOME/googlevault /$HOME/icloudvault | xargs -I{} unison -batch -times -prefer newer -auto -fastcheck true -path ./ -ignore "Name .DS_Store" $HOME/googlevault $HOME/icloudvault'
-alias obsidian-sync-blog='fswatch -o $HOME/work/projects/okojomemorandum/drafts /$HOME/icloudvault/103_BlogNotes | xargs -I{} unison -batch -times -prefer newer -auto -fastcheck true -path ./ -ignore "Name .DS_Store" $HOME/work/projects/okojomemorandum/drafts $HOME/icloudvault/103_BlogNotes'
-
+alias obsidian-sync='fswatch -o $HOME/googlevault $HOME/icloudvault | xargs -I{} unison -batch -times -prefer newer -auto -fastcheck true -path ./ -ignore "Name .DS_Store" $HOME/googlevault $HOME/icloudvault'
+alias obsidian-sync-blog='fswatch -o $HOME/work/projects/okojomemorandum/drafts $HOME/icloudvault/103_BlogNotes | xargs -I{} unison -batch -times -prefer newer -auto -fastcheck true -path ./ -ignore "Name .DS_Store" $HOME/work/projects/okojomemorandum/drafts $HOME/icloudvault/103_BlogNotes'
+alias fos='nohup fswatch -o $HOME/googlevault $HOME/icloudvault | xargs -I{} unison -batch -times -prefer newer -auto -fastcheck true -path ./ -ignore "Name .DS_Store" $HOME/googlevault $HOME/icloudvault &!'
+alias fosb='nohup fswatch -o $HOME/work/projects/okojomemorandum/drafts $HOME/icloudvault/103_BlogNotes | xargs -I{} unison -batch -times -prefer newer -auto -fastcheck true -path ./ -ignore "Name .DS_Store" $HOME/work/projects/okojomemorandum/drafts $HOME/icloudvault/103_BlogNotes &!'
 
 
 
